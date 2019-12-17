@@ -2,8 +2,9 @@ FROM ubuntu:18.04
 
 ENV LANG=C.UTF-8
 
-RUN apt-get update && \
-    apt-get install -y --no-install-recommends ca-certificates wget gnupg && \
+RUN apt update && \
+    apt dist-upgrade -y && \
+    apt install -y --no-install-recommends ca-certificates wget gnupg && \
     wget -O - https://facebook.github.io/mcrouter/debrepo/bionic/PUBLIC.KEY | apt-key add && \
     echo "deb https://facebook.github.io/mcrouter/debrepo/bionic bionic contrib" >> /etc/apt/sources.list && \
     apt update && \
