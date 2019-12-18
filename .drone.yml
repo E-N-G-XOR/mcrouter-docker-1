@@ -11,4 +11,4 @@ steps:
       TRIGGERURL:
         from_secret: triggerurl
     commands:
-      - curl -X POST ${TRIGGERURL}
+      - curl -X POST $${TRIGGERURL}
