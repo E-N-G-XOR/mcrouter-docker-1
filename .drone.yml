@@ -1,15 +1,14 @@
 ---
 kind: pipeline
+type: docker
 name: default
 
 steps:
 
-  - name: docker
-    image: plugins/docker
-    settings:
-      repo: bitsbeats/mcrouter
-      username:
-        from_secret: docker_username
-      password:
-        from_secret: docker_password
-      auto_tag: true
+  - name: autoupdate
+    image: bitsbeats/make
+    environment:
+      TRIGGERURL:
+        from_secret: triggerurl
+    commands:
+      - curl -X POST ${TRIGGERURL}
